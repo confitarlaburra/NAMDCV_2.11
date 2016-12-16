@@ -1,0 +1,16 @@
+colvarproxy_namd.C:    colvars->it = colvars->it_restart = simparams->firstTimestep;
+colvarproxy_namd.C:      colvars->it++;
+colvarproxy_namd.C:              "colvarproxy_namd, step no. "+cvm::to_str (colvars->it)+"\n"+
+colvarproxy_namd.C:  colvars->calc();
+colvarproxy_namd.C:    colvars->write_output_files();
+colvars_main.C:  proxy->colvars->analyse();
+colvars_main.C:  if (proxy->colvars->cv_traj_read_name.size()) {
+colvars_main.C:    while (proxy->colvars->read_traj (proxy->colvars->cv_traj_read_name.c_str())) {
+colvars_main.C:      if (proxy->colvars->b_analysis)
+colvars_main.C:        proxy->colvars->analyse();
+colvars_main.C:    if (proxy->colvars->b_analysis)
+colvars_main.C:      proxy->colvars->analyse();
+ScriptTcl.C:      colvars->change_configuration(name,conf);
+ScriptTcl.C:      ediff += colvars->energy_difference(name,conf);
+ScriptTcl.C:  std::string value = colvars->read_colvar(name);
+ScriptTcl.C:  colvars->cv_traj_freq = new_freq;

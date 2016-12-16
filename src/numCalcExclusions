@@ -1,0 +1,397 @@
+CollectionMaster.C:  positions.submitData(msg,Node::Object()->molecule->numAtoms);
+CollectionMaster.C:  velocities.submitData(msg,Node::Object()->molecule->numAtoms);
+CollectionMaster.C:  forces.submitData(msg,Node::Object()->molecule->numAtoms);
+CollectionMaster.C:            parOut->coordinateMaster(c->seq,Node::Object()->molecule->numAtoms,c->lattice);
+CollectionMaster.C:            parOut->coordinateMaster(c->seq,Node::Object()->molecule->numAtoms,c->lattice);
+CollectionMaster.C:        parOut->velocityMaster(c->seq, Node::Object()->molecule->numAtoms);
+CollectionMaster.C:        parOut->forceMaster(c->seq, Node::Object()->molecule->numAtoms);
+colvarproxy_namd.C:  if ( (aid < 0) || (aid >= Node::Object()->molecule->numAtoms) ) 
+colvarproxy_namd.C:  this->mass = Node::Object()->molecule->atommass (aid);
+colvarproxy_namd.C:  this->charge = Node::Object()->molecule->atomcharge (aid);
+colvarproxy_namd.C:       Node::Object()->molecule->get_atom_from_name (segment_id.c_str(),
+colvarproxy_namd.C:     Node::Object()->molecule->get_atom_from_name ("MAIN",
+colvarproxy_namd.C:  this->mass = Node::Object()->molecule->atommass (aid);
+colvarproxy_namd.C:  this->charge = Node::Object()->molecule->atomcharge (aid);
+ComputeConsForce.C:  int32 *index = molecule->consForceIndexes;  // Indexes into the force array
+ComputeConsForce.C:  Vector *cf = molecule->consForce;  // Force array
+ComputeConsForce.C:  int32 *index = molecule->consTorqueIndexes;  // Indexes into the torque array
+ComputeConsForce.C:      molecule->get_constorque_params(consTorqueVal, consTorqueAxis, consTorquePivot, p[localID].id);
+ComputeDPME.C:  localData = new Pme2Particle[molecule->numAtoms];
+ComputeExt.C:    numAtoms = Node::Object()->molecule->numAtoms;
+ComputeFmmSerial.C:    numAtoms = Node::Object()->molecule->numAtoms;
+ComputeGBISser.C:      int exclij = 0;//molecule->checkexcl(i,j);
+ComputeGBISser.C:    numAtoms = Node::Object()->molecule->numAtoms;
+ComputeHomeTuples.h:             int has_les = lesOn && node->molecule->get_fep_type(t.atomID[0]);
+ComputeHomeTuples.h:                 has_les |= lesOn && node->molecule->get_fep_type(t.atomID[i]);
+ComputeMgr.C:                                    node->molecule->numAtoms)
+ComputeMsmSerial.C:    numAtoms = Node::Object()->molecule->numAtoms;
+ComputeNonbondedMIC.C:      const float atomsPerPE = ((float)(molecule->numAtoms)) / ((float)(CkNumPes()));
+ComputeRestraints.C:	  if (molecule->is_atom_constrained(p[localID].id))
+ComputeRestraints.C:	    molecule->get_cons_params(k, refPos, p[localID].id);
+ComputeSelfTuples.h:             int has_les = lesOn && node->molecule->get_fep_type(t.atomID[0]);
+ComputeSelfTuples.h:                 has_les |= lesOn && node->molecule->get_fep_type(t.atomID[i]);
+ComputeStir.C:  const int globalNumAtoms = molecule->numAtoms;
+ComputeStir.C:      if (molecule->is_atom_stirred(i))
+ComputeStir.C:	molecule->get_stir_refPos (refPos, i);
+ComputeStir.C:	molecule->put_stir_startTheta (findTheta(refPos), i); 
+ComputeStir.C:	//iout << "DEBUG: For atom i="<<i<<" refPos.x= " << refPos.x << " refPos.y= "<<refPos.y<<" refPos.z "<< refPos.z  <<  " theta= " << molecule->get_stir_startTheta(i)<<"\n"<<endi; 
+ComputeStir.C:      if (molecule->is_atom_stirred(p[i].id))
+ComputeStir.C:	molecule->get_stir_startTheta (p[i].id);
+ComputeStir.C:	              molecule->get_stir_startTheta (p[i].id);
+ComputeStir.C:	  sprintf (statbuf, "DEBUG: step= %d atom i= %d globID= %d T= %g %g %g C= %g %g %g F= %g %g %g startTheta= %g targTheta= %g forceMag= %g F.len= %g FC.len= %g\n",currentStep,i,p[i].id, targPos.x, targPos.y, targPos.z, curPos.x, curPos.y, curPos.z,theForce.x, theForce.y, theForce.z, molecule->get_stir_startTheta (p[i].id),  targTheta,  forceMag, theForce.length(), forces[i].length());
+ComputeTclBC.C:  drops.resize(Node::Object()->molecule->numAtoms);
+Controller.C:    numDegFreedom = molecule->num_deg_freedom();
+Controller.C:    int numGroupDegFreedom = molecule->num_group_deg_freedom();
+Controller.C:    int numFixedGroups = molecule->num_fixed_groups();
+Controller.C:    int numFixedAtoms = molecule->num_fixed_atoms();
+Controller.C:    int numAtoms = molecule->numAtoms;
+Controller.C:    int numGroupDegFreedom = 3 * molecule->numHydrogenGroups;
+Controller.C:	( simParameters->fixedAtomsOn ? molecule->numFixedAtoms : 0 );
+Controller.C:    int numLonepairs = molecule->numLonepairs;
+Controller.C:    int numFixedGroups = ( numFixedAtoms ? molecule->numFixedGroups : 0 );
+Controller.C:    if ( ! ( numFixedAtoms || molecule->numConstraints
+Controller.C:      numDegFreedom = 3 * molecule->numFepInitial;
+Controller.C:    int numRigidBonds = molecule->numRigidBonds;
+Controller.C:	( simParameters->fixedAtomsOn ? molecule->numFixedRigidBonds : 0 );
+Controller.C:      int g_bond = 3 * molecule->numDrudeAtoms;
+Controller.C:        //printf("Applying tail correction of %f to virial\n", molecule->tail_corr_virial / volume);
+Controller.C:        virial_normal += Tensor::identity(molecule->tail_corr_virial / volume);
+Controller.C:      controlNumDegFreedom = molecule->numHydrogenGroups - numFixedGroups;
+Controller.C:      if ( ! ( numFixedAtoms || molecule->numConstraints
+Controller.C:    if ( ((int)checksum) != molecule->numAtoms ) {
+Controller.C:              (int)checksum, molecule->numAtoms);
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcBonds) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcBonds) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcAngles) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcAngles) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcDihedrals) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcDihedrals) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcImpropers) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcImpropers) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcTholes) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcTholes) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcAnisos) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcAnisos) )
+Controller.C:    if ( checksum_b && (((int)checksum) != molecule->numCalcCrossterms) ) {
+Controller.C:      if ( forgiving && (((int)checksum) < molecule->numCalcCrossterms) )
+Controller.C:    if ( ((int)checksum) > molecule->numCalcExclusions &&
+Controller.C:                      << molecule->numCalcExclusions << "), possible error!\n"
+Controller.C:                (int)checksum, molecule->numCalcExclusions);
+Controller.C:    std::cout<<"molecule->numCalcExclusions ############################################ "<<molecule->numCalcExclusions<<std::endl;
+Controller.C:    if ( ((int)checksum) && ((int)checksum) < molecule->numCalcExclusions && ! simParams->goGroPair ) {
+Controller.C:          << ((int)checksum) << " vs " << molecule->numCalcExclusions << ")";
+Controller.C:                (int)checksum, molecule->numCalcExclusions);
+Controller.C:      //printf("Applying tail correction of %f to energy\n", molecule->tail_corr_ener / volume);
+Controller.C:      ljEnergy += molecule->tail_corr_ener / volume;
+Controller.C:      ljEnergy_f += molecule->tail_corr_ener / volume;
+Controller.C:      ljEnergy_f_left += molecule->tail_corr_ener / volume;
+Controller.C.~1.1305.~:    numDegFreedom = molecule->num_deg_freedom();
+Controller.C.~1.1305.~:    int numGroupDegFreedom = molecule->num_group_deg_freedom();
+Controller.C.~1.1305.~:    int numFixedGroups = molecule->num_fixed_groups();
+Controller.C.~1.1305.~:    int numFixedAtoms = molecule->num_fixed_atoms();
+Controller.C.~1.1305.~:    int numAtoms = molecule->numAtoms;
+Controller.C.~1.1305.~:    int numGroupDegFreedom = 3 * molecule->numHydrogenGroups;
+Controller.C.~1.1305.~:	( simParameters->fixedAtomsOn ? molecule->numFixedAtoms : 0 );
+Controller.C.~1.1305.~:    int numLonepairs = molecule->numLonepairs;
+Controller.C.~1.1305.~:    int numFixedGroups = ( numFixedAtoms ? molecule->numFixedGroups : 0 );
+Controller.C.~1.1305.~:    if ( ! ( numFixedAtoms || molecule->numConstraints
+Controller.C.~1.1305.~:      numDegFreedom = 3 * molecule->numFepInitial;
+Controller.C.~1.1305.~:    int numRigidBonds = molecule->numRigidBonds;
+Controller.C.~1.1305.~:	( simParameters->fixedAtomsOn ? molecule->numFixedRigidBonds : 0 );
+Controller.C.~1.1305.~:      int g_bond = 3 * molecule->numDrudeAtoms;
+Controller.C.~1.1305.~:        //printf("Applying tail correction of %f to virial\n", molecule->tail_corr_virial / volume);
+Controller.C.~1.1305.~:        virial_normal += Tensor::identity(molecule->tail_corr_virial / volume);
+Controller.C.~1.1305.~:      controlNumDegFreedom = molecule->numHydrogenGroups - numFixedGroups;
+Controller.C.~1.1305.~:      if ( ! ( numFixedAtoms || molecule->numConstraints
+Controller.C.~1.1305.~:    if ( ((int)checksum) != molecule->numAtoms ) {
+Controller.C.~1.1305.~:              (int)checksum, molecule->numAtoms);
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcBonds) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcBonds) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcAngles) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcAngles) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcDihedrals) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcDihedrals) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcImpropers) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcImpropers) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcTholes) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcTholes) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcAnisos) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcAnisos) )
+Controller.C.~1.1305.~:    if ( checksum_b && (((int)checksum) != molecule->numCalcCrossterms) ) {
+Controller.C.~1.1305.~:      if ( forgiving && (((int)checksum) < molecule->numCalcCrossterms) )
+Controller.C.~1.1305.~:    if ( ((int)checksum) > molecule->numCalcExclusions &&
+Controller.C.~1.1305.~:                      << molecule->numCalcExclusions << "), possible error!\n"
+Controller.C.~1.1305.~:                (int)checksum, molecule->numCalcExclusions);
+Controller.C.~1.1305.~:    if ( ((int)checksum) && ((int)checksum) < molecule->numCalcExclusions && ! simParams->goGroPair ) {
+Controller.C.~1.1305.~:          << ((int)checksum) << " vs " << molecule->numCalcExclusions << ")";
+Controller.C.~1.1305.~:                (int)checksum, molecule->numCalcExclusions);
+Controller.C.~1.1305.~:      //printf("Applying tail correction of %f to energy\n", molecule->tail_corr_ener / volume);
+Controller.C.~1.1305.~:      ljEnergy += molecule->tail_corr_ener / volume;
+Controller.C.~1.1305.~:      ljEnergy_f += molecule->tail_corr_ener / volume;
+Controller.C.~1.1305.~:      ljEnergy_f_left += molecule->tail_corr_ener / volume;
+DumpBench.C:      int sigId = node->molecule->getAtomSigId(i);
+DumpBench.C:      int *p = node->molecule->get_bonds_for_atom(i);      
+DumpBench.C:      int sigId = node->molecule->getAtomSigId(i);
+DumpBench.C:      int *p = node->molecule->get_angles_for_atom(i);      
+DumpBench.C:      int sigId = node->molecule->getAtomSigId(i);
+DumpBench.C:      int *p = node->molecule->get_dihedrals_for_atom(i);      
+DumpBench.C:      int sigId = node->molecule->getAtomSigId(i);
+DumpBench.C:      int *p = node->molecule->get_impropers_for_atom(i);      
+GlobalMasterEasy.C:  return molecule->get_atom_from_name(segid,resid,aname);
+GlobalMasterEasy.C:  return molecule->get_residue_size(segid,resid);
+GlobalMasterEasy.C:  return molecule->get_atom_from_index_in_residue(segid,resid,index);
+GlobalMasterEasy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1.;  // failure
+GlobalMasterEasy.C:  return molecule->atommass(atomid);
+GlobalMasterEasy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1;  // failure
+GlobalMasterEasy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1;  // failure
+GlobalMasterFreeEnergy.C:  return molecule->get_atom_from_name(segid,resid,aname);
+GlobalMasterFreeEnergy.C:  return molecule->get_residue_size(segid,resid);
+GlobalMasterFreeEnergy.C:  return molecule->get_atom_from_index_in_residue(segid,resid,index);
+GlobalMasterFreeEnergy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1.;  // failure
+GlobalMasterFreeEnergy.C:  return molecule->atommass(atomid);
+GlobalMasterFreeEnergy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1;  // failure
+GlobalMasterFreeEnergy.C:  if ( atomid < 0 || atomid >= molecule->numAtoms ) return -1;  // failure
+GlobalMasterSymmetry.C:    parseAtoms(symmetryList->data, Node::Object()->molecule->numAtoms, symfileindex);
+GlobalMasterTMD.C:  if (qDiffRMSD) parseAtoms(params->TMDFile2,Node::Object()->molecule->numAtoms, 1);
+GlobalMasterTMD.C:  parseAtoms(params->TMDFile,Node::Object()->molecule->numAtoms, 0);
+HomePatch.C:      Lphost *lph = Node::Object()->molecule->get_lphost(aid);  // its lphost
+HomePatch.C:      Lphost *lph = Node::Object()->molecule->get_lphost(aid);  // its lphost
+Measure.C:  int numAtoms = molecule->numAtoms;
+Measure.C:  int numAtoms = molecule->numAtoms;
+Measure.C:    BigReal mass = molecule->atommass(i);
+Measure.C:  int numAtoms = molecule->numAtoms;
+Measure.C:    BigReal mass = molecule->atommass(i);
+Measure.C:    BigReal mass = molecule->atommass(i);
+Measure.C:  int numAtoms = molecule->numAtoms;
+NamdState.C:        pdb = new PDB(pIOHandle, plgFile, molecule->numAtoms, molecule->getOccupancyData(), molecule->getBFactorData());
+NamdState.C:        molecule->freeOccupancyData();
+NamdState.C:        molecule->freeBFactorData();
+NamdState.C:    int numatoms = molecule->numAtoms;
+NamdState.C:    int numatoms = molecule->numAtoms;
+NamdState.C:      molecule->load_fixed_atoms(configList->find("fixedAtomListFile"));
+NamdState.C:      molecule->load_constrained_atoms(configList->find("consAtomListFile"));
+NamdState.C:      molecule->build_extra_bonds(parameters, configList->find("extraBondsFile"));         
+NamdState.C:      if (pdb->num_atoms() != molecule->numAtoms) {
+NamdState.C:           molecule->build_constraint_params(consRefFile, consKFile,
+NamdState.C:	   molecule->build_stirred_atoms(configList->find("stirFilename"),
+NamdState.C:	   molecule->build_fixed_atoms(configList->find("fixedatomsfile"),
+NamdState.C:	    molecule->build_gridforce_params(configList->find("gridforcefile"),
+NamdState.C:    molecule->build_constant_forces(filename);
+NamdState.C:           molecule->build_exPressure_atoms(
+NamdState.C:	  molecule->build_movdrag_params(configList->find("movDragFile"),
+NamdState.C:	  molecule->build_rotdrag_params(configList->find("rotDragFile"),
+NamdState.C:	  molecule->build_constorque_params(configList->find("consTorqueFile"),
+NamdState.C:	    molecule->build_langevin_params(configList->find("langevinfile"),
+NamdState.C:	    molecule->build_langevin_params(simParameters->langevinDamping,
+NamdState.C:	   molecule->build_langevin_params(configList->find("tcouplefile"),
+NamdState.C:           molecule->build_fep_flags(configList->find("alchfile"),
+NamdState.C:           molecule->delete_alch_bonded();
+NamdState.C:           molecule->build_fep_flags(configList->find("lesfile"),
+NamdState.C:           molecule->build_fep_flags(configList->find("pairInteractionFile"),
+NamdState.C:          molecule->build_fep_flags(configList->find("pressureProfileAtomTypesFile"),
+NamdState.C:	  molecule->build_go_params(goFilename);
+NamdState.C:	    molecule->build_go_sigmas(goStructureFilename, NULL);
+NamdState.C:	    molecule->build_go_sigmas2(goStructureFilename, NULL);
+NamdState.C:	    molecule->build_go_arrays(goStructureFilename, NULL);
+NamdState.C:	iout << iINFO << molecule->numAtoms << " ATOMS\n";
+NamdState.C:	iout << iINFO << molecule->numBonds << " BONDS\n";
+NamdState.C:	iout << iINFO << molecule->numAngles << " ANGLES\n";
+NamdState.C:	iout << iINFO << molecule->numDihedrals << " DIHEDRALS\n";
+NamdState.C:	iout << iINFO << molecule->numImpropers << " IMPROPERS\n";
+NamdState.C:	iout << iINFO << molecule->numCrossterms << " CROSSTERMS\n";
+NamdState.C:	iout << iINFO << molecule->numExclusions << " EXCLUSIONS\n";
+NamdState.C:	if ((molecule->numMultipleDihedrals) && (simParameters->paraTypeXplorOn))
+NamdState.C:		iout << iINFO << molecule->numMultipleDihedrals 
+NamdState.C:	if ((molecule->numMultipleDihedrals) && (simParameters->paraTypeCharmmOn))
+NamdState.C:		iout << iINFO << molecule->numMultipleDihedrals 
+NamdState.C:	if (molecule->numMultipleImpropers)
+NamdState.C:		iout << iINFO << molecule->numMultipleImpropers 
+NamdState.C:	   iout << iINFO << molecule->numConstraints << " CONSTRAINTS\n";
+NamdState.C:	  iout << iINFO << molecule->numConsForce << " CONSTANT FORCES\n";
+NamdState.C:	  iout << iINFO << molecule->numStirredAtoms << " STIRRED ATOMS\n";
+NamdState.C:	   iout << iINFO << molecule->numFixedAtoms << " FIXED ATOMS\n";
+NamdState.C:	   iout << iINFO << molecule->numRigidBonds << " RIGID BONDS\n";
+NamdState.C:	   iout << iINFO << molecule->numFixedRigidBonds <<
+NamdState.C:	    iout << iINFO << molecule->numGridforceGrids 
+NamdState.C:               << molecule->numFepInitial <<
+NamdState.C:               <<  molecule->numFepFinal <<
+NamdState.C:           if (molecule->suspiciousAlchBonds) {
+NamdState.C:           if (molecule->alchDroppedAngles) {
+NamdState.C:                 << molecule->alchDroppedAngles <<
+NamdState.C:           if (molecule->alchDroppedDihedrals) {
+NamdState.C:                 << molecule->alchDroppedDihedrals <<
+NamdState.C:           if (molecule->alchDroppedImpropers) {
+NamdState.C:                 << molecule->alchDroppedImpropers <<
+NamdState.C:           iout << iINFO << molecule->numFepInitial <<
+NamdState.C:                <<  molecule->numFepInitial << " ATOMS\n";
+NamdState.C:                  <<  molecule->numFepFinal << " ATOMS\n";
+NamdState.C:        if (molecule->numLonepairs != 0) {
+NamdState.C:          iout << iINFO << molecule->numLonepairs << " LONE PAIRS\n";
+NamdState.C:        if (molecule->numDrudeAtoms != 0) {
+NamdState.C:          iout << iINFO << molecule->numDrudeAtoms << " DRUDE ATOMS\n";
+NamdState.C:        iout << iINFO << molecule->num_deg_freedom(1)
+NamdState.C:          int g_bond = 3 * molecule->numDrudeAtoms;
+NamdState.C:          int g_com = molecule->num_deg_freedom(1) - g_bond;
+NamdState.C:	  int numAtoms = molecule->numAtoms;
+NamdState.C:    int numLonepairs = molecule->numLonepairs;
+NamdState.C:	  int numFixedAtoms = molecule->numFixedAtoms;
+NamdState.C:	  if ( ! ( numFixedAtoms || molecule->numConstraints
+NamdState.C:	  int numRigidBonds = molecule->numRigidBonds;
+NamdState.C:	  int numFixedRigidBonds = molecule->numFixedRigidBonds;
+NamdState.C:	iout << iINFO << molecule->numHydrogenGroups << " HYDROGEN GROUPS\n";
+NamdState.C:	iout << iINFO << molecule->maxHydrogenGroupSize
+NamdState.C:	iout << iINFO << molecule->numMigrationGroups << " MIGRATION GROUPS\n";
+NamdState.C:	iout << iINFO << molecule->maxMigrationGroupSize
+NamdState.C:	   iout << iINFO << molecule->numFixedGroups <<
+NamdState.C:          for ( i = 0; i < molecule->numAtoms; ++i ) {
+NamdState.C:            totalMass += molecule->atommass(i);
+NamdState.C:            totalCharge += molecule->atomcharge(i);
+NamdState.C:              << (molecule->numAtoms/volume) << " atoms/A^3\n";
+NamdState.C:  molecule->print_atoms(parameters);
+NamdState.C:  molecule->print_bonds(parameters);
+NamdState.C:  molecule->print_exclusions();
+Node.C:    AtomMap::Object()->allocateMap(molecule->numAtoms);
+Node.C:  molecule->receive_Molecule(conv_msg);
+Node.C:    molecule->receive_GoMolecule(conv_msg);
+Node.C:  if(molecule->numAtoms>=1000000) bufSize = 16*BUFSIZE;
+Node.C:  molecule->send_Molecule(conv_msg);
+Node.C:    molecule->send_GoMolecule(conv_msg);
+Node.C:  int n = molecule->numAtoms;
+Node.C:  molecule->reloadCharges(charge,n);
+Node.C:    GridforceGrid *grid = molecule->get_gridfrc_grid(gridnum);
+Node.C:    GridforceGrid *grid = molecule->get_gridfrc_grid(gridnum);
+Node.C:	molecule->set_gridfrc_grid(gridnum, grid);
+Output.C:  int n = molecule->numAtoms;
+Output.C:    int ci = molecule->get_cluster(i);
+Output.C:    if ( ! wrapAll && ! molecule->is_water(i) ) continue;
+Output.C:    int ci = molecule->get_cluster(i);
+Output.C:      Vector coni = con[i] / molecule->get_clusterSize(i);
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+Output.C:    int totalAtoms = namdMyNode->molecule->numAtoms;
+ParallelIOMgr.C:        molecule->read_binary_atom_info(myAtomLIdx, myAtomUIdx, initAtoms);
+ParallelIOMgr.C:    if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:    if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:        if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:        if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:        if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:        if(filelen!=molecule->numAtoms) {
+ParallelIOMgr.C:    int64 offset = sizeof(char)*((int64)(fromIdx-molecule->numAtoms));
+ParallelIOMgr.C:    offset = sizeof(int)*((int64)(fromIdx-molecule->numAtoms))
+ParallelIOMgr.C:                   - sizeof(char)*((int64)(molecule->numAtoms));
+ParallelIOMgr.C:    if(molecule->numRigidBonds){
+ParallelIOMgr.C:    if(molecule->numFixedAtoms){        
+ParallelIOMgr.C:    AtomSignature *atomSigPool = molecule->atomSigPool;
+ParallelIOMgr.C:    ExclusionSignature *exclSigPool = molecule->exclSigPool;
+ParallelIOMgr.C:    if(molecule->numFixedAtoms>0 && ! simParameters->fixedAtomsForces) {
+ParallelIOMgr.C:    molecule->numBonds += msg->numBonds;
+ParallelIOMgr.C:    molecule->numCalcBonds += msg->numCalcBonds;
+ParallelIOMgr.C:    molecule->numAngles += msg->numAngles;
+ParallelIOMgr.C:    molecule->numCalcAngles += msg->numCalcAngles;
+ParallelIOMgr.C:    molecule->numDihedrals += msg->numDihedrals;
+ParallelIOMgr.C:    molecule->numCalcDihedrals += msg->numCalcDihedrals;
+ParallelIOMgr.C:    molecule->numImpropers += msg->numImpropers;
+ParallelIOMgr.C:    molecule->numCalcImpropers += msg->numCalcImpropers;
+ParallelIOMgr.C:    molecule->numCrossterms += msg->numCrossterms;
+ParallelIOMgr.C:    molecule->numCalcCrossterms += msg->numCalcCrossterms;
+ParallelIOMgr.C:    molecule->numTotalExclusions += msg->numExclusions;
+ParallelIOMgr.C:    molecule->numCalcExclusions += msg->numCalcExclusions;
+ParallelIOMgr.C:    molecule->numRigidBonds += msg->numRigidBonds;
+ParallelIOMgr.C:        msg->numBonds = molecule->numBonds;
+ParallelIOMgr.C:        msg->numCalcBonds = molecule->numCalcBonds;
+ParallelIOMgr.C:        msg->numAngles = molecule->numAngles;
+ParallelIOMgr.C:        msg->numCalcAngles = molecule->numCalcAngles;
+ParallelIOMgr.C:        msg->numDihedrals = molecule->numDihedrals;
+ParallelIOMgr.C:        msg->numCalcDihedrals = molecule->numCalcDihedrals;
+ParallelIOMgr.C:        msg->numImpropers = molecule->numImpropers;
+ParallelIOMgr.C:        msg->numCalcImpropers = molecule->numCalcImpropers;
+ParallelIOMgr.C:        msg->numCrossterms = molecule->numCrossterms;
+ParallelIOMgr.C:        msg->numCalcCrossterms = molecule->numCalcCrossterms;
+ParallelIOMgr.C:        msg->numExclusions = molecule->numTotalExclusions/2;
+ParallelIOMgr.C:        msg->numCalcExclusions = molecule->numCalcExclusions/2;
+ParallelIOMgr.C:        msg->numRigidBonds = molecule->numRigidBonds;
+ParallelIOMgr.C:    molecule->numBonds = msg->numBonds;
+ParallelIOMgr.C:    molecule->numCalcBonds = msg->numCalcBonds;
+ParallelIOMgr.C:    molecule->numAngles = msg->numAngles;
+ParallelIOMgr.C:    molecule->numCalcAngles = msg->numCalcAngles;
+ParallelIOMgr.C:    molecule->numDihedrals = msg->numDihedrals;
+ParallelIOMgr.C:    molecule->numCalcDihedrals = msg->numCalcDihedrals;
+ParallelIOMgr.C:    molecule->numImpropers = msg->numImpropers;
+ParallelIOMgr.C:    molecule->numCalcImpropers = msg->numCalcImpropers;
+ParallelIOMgr.C:    molecule->numCrossterms = msg->numCrossterms;
+ParallelIOMgr.C:    molecule->numCalcCrossterms = msg->numCalcCrossterms;
+ParallelIOMgr.C:    molecule->numTotalExclusions = msg->numExclusions;
+ParallelIOMgr.C:    molecule->numCalcExclusions = msg->numCalcExclusions;
+ParallelIOMgr.C:    molecule->numRigidBonds = msg->numRigidBonds;
+ParallelIOMgr.C:        iout << iINFO << "LOADED " << molecule->numTotalExclusions << " TOTAL EXCLUSIONS\n" << endi;
+ParallelIOMgr.C:    molecule->numFixedRigidBonds += msg->numFixedRigidBonds;
+ParallelIOMgr.C:    molecule->numFixedGroups += msg->numFixedGroups;
+ParallelIOMgr.C:        msg->numFixedRigidBonds = molecule->numFixedRigidBonds;
+ParallelIOMgr.C:        msg->numFixedGroups = molecule->numFixedGroups;
+ParallelIOMgr.C:    molecule->numFixedRigidBonds = msg->numFixedRigidBonds;
+ParallelIOMgr.C:    molecule->numFixedGroups = msg->numFixedGroups;
+ParallelIOMgr.C:        iout << iINFO << molecule->numAtoms << " ATOMS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numBonds << " BONDS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numAngles << " ANGLES\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numDihedrals << " DIHEDRALS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numImpropers << " IMPROPERS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numCrossterms << " CROSSTERMS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->numExclusions << " EXCLUSIONS\n";
+ParallelIOMgr.C:        if ((molecule->numMultipleDihedrals) && (simParameters->paraTypeXplorOn)){
+ParallelIOMgr.C:            iout << iINFO << molecule->numMultipleDihedrals 
+ParallelIOMgr.C:        if ((molecule->numMultipleDihedrals) && (simParameters->paraTypeCharmmOn)){
+ParallelIOMgr.C:            iout << iINFO << molecule->numMultipleDihedrals 
+ParallelIOMgr.C:        if (molecule->numMultipleImpropers){
+ParallelIOMgr.C:            iout << iINFO << molecule->numMultipleImpropers 
+ParallelIOMgr.C:           iout << iINFO << molecule->numFixedAtoms << " FIXED ATOMS\n";
+ParallelIOMgr.C:           iout << iINFO << molecule->numRigidBonds << " RIGID BONDS\n";        
+ParallelIOMgr.C:           iout << iINFO << molecule->numFixedRigidBonds <<
+ParallelIOMgr.C:        iout << iINFO << molecule->num_deg_freedom(1)
+ParallelIOMgr.C:        iout << iINFO << molecule->numHydrogenGroups << " HYDROGEN GROUPS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->maxHydrogenGroupSize
+ParallelIOMgr.C:        iout << iINFO << molecule->numMigrationGroups << " MIGRATION GROUPS\n";
+ParallelIOMgr.C:        iout << iINFO << molecule->maxMigrationGroupSize
+ParallelIOMgr.C:           iout << iINFO << molecule->numFixedGroups <<
+ParallelIOMgr.C:                << (molecule->numAtoms/volume) << " atoms/A^3\n";
+ParallelIOMgr.C:        if ( totalAtoms !=  Node::Object()->molecule->numAtoms ) {
+ParallelIOMgr.C:          sprintf(errstr, "Incorrect atom count in void ParallelIOMgr::recvAtomsCntPerPatch: %d vs %d", totalAtoms, Node::Object()->molecule->numAtoms);
+ParallelIOMgr.C:    molecule->delAtomNames();
+ParallelIOMgr.C:    molecule->delChargeSpace();
+ParallelIOMgr.C:        molecule->delMassSpace();
+ParallelIOMgr.C:    molecule->delFixedAtoms();
+ParallelIOMgr.C:    int avgNum = molecule->numAtoms/numProcs;
+ParallelIOMgr.C:    int remainder = molecule->numAtoms%numProcs;
+ParallelIOMgr.C:    int avgNum = molecule->numAtoms/numProcs;
+ParallelIOMgr.C:    int remainder = molecule->numAtoms%numProcs;
+ParallelIOMgr.C:    int avgNum = molecule->numAtoms/numProcs;
+ParallelIOMgr.C:    int remainder = molecule->numAtoms%numProcs;
+ParallelIOMgr.h:            return molecule->is_atom_fixed(reqAId);
+Sequencer.C:	 || !(molecule->is_atom_movdragged(atom[i].id)) ) continue;
+Sequencer.C:    molecule->get_movdrag_params(movDragVel, atom[i].id);
+Sequencer.C:	 || !(molecule->is_atom_rotdragged(atom[i].id)) ) continue;
+Sequencer.C:    molecule->get_rotdrag_params(rotDragVel, rotDragAxis, rotDragPivot, atom[i].id);
+Sequencer.C:    a[i].charge = molecule->atomcharge(a[i].id);
+WorkDistrib.C:        a[j].partition = molecule->get_fep_type(aid);
+WorkDistrib.C:        HydrogenGroupID &h = molecule->hydrogenGroup[i];
+WorkDistrib.C:            HydrogenGroupID &h = molecule->hydrogenGroup[sa.id + k];
+WorkDistrib.C:            a.vdwType = molecule->atomvdwtype(aid);
+WorkDistrib.C:            a.status = molecule->getAtoms()[aid].status;
+WorkDistrib.C:            a.langevinParam = molecule->langevin_param(aid);
+WorkDistrib.C:              a.rigidBondLength = molecule->rigid_bond_length(aid);
+WorkDistrib.C:      HydrogenGroupID &h = molecule->hydrogenGroup[i];
+WorkDistrib.C:      a.vdwType = molecule->atomvdwtype(aid);
+WorkDistrib.C:      a.status = molecule->getAtoms()[aid].status;
+WorkDistrib.C:      a.langevinParam = molecule->langevin_param(aid);
+WorkDistrib.C:        a.rigidBondLength = molecule->rigid_bond_length(aid);
+WorkDistrib.C:      a[j].atomFixed = molecule->is_atom_fixed(aid) ? 1 : 0;
+WorkDistrib.C:      a[j].mass = molecule->atommass(aid);
+WorkDistrib.C:      a[j].charge = molecule->atomcharge(aid);
+WorkDistrib.C:        a[j].partition = molecule->get_fep_type(aid);
+WorkDistrib.C:  node->molecule->delEachAtomSigs();
+WorkDistrib.C:  node->molecule->delMassChargeSpace();
+WorkDistrib.C:    maxNumPatches = node->molecule->numAtoms / params->minAtomsPerPatch;
+WorkDistrib.C:  if ( numAtoms != Node::Object()->molecule->numAtoms ) {
+WorkDistrib.C:    iout << iINFO << "Assigned " << numAtoms << " atoms but expected " << Node::Object()->molecule->numAtoms << "\n" << endi;
