@@ -1146,6 +1146,63 @@ void colvar::eigenvector::calc_Jacobian_derivative()
   jd.real_value = sum * std::sqrt (eigenvec_invnorm2);
 }
 
+/// jag 2016
+colvar::dipole_magnitude::dipole_magnitude(std::string const &conf)
+  : cvc(conf)
+{
+  function_type = "dipole_magnitude";
+  b_inverse_gradients = false;
+  b_Jacobian_derivative = false;
+  parse_group (conf, "atoms", atoms);
+  atom_groups.push_back (&atoms);
+  
+  if (atoms.b_user_defined_fit) {
+    cvm::log("WARNING: explicit fitting parameters were provided for atom group \"atoms\".");
+  } else {
+    atoms.b_center = true;
+    atoms.ref_pos.assign(1, cvm::atom_pos(0.0, 0.0, 0.0));
+  }
+
+  x.type(colvarvalue::type_scalar);
+}
 
 
+colvar::dipole_magnitude::dipole_magnitude()
+{
+  function_type = "dipole_magnitude";
+  b_inverse_gradients = false;
+  b_Jacobian_derivative = false;
+  x.type(colvarvalue::type_scalar);
+}
+
+
+void colvar::dipole_magnitude::calc_value()
+{
+  x.real_value = 0.0;
+  cvm::atom_pos const atomsCom = atoms.center_of_mass();
+  cvm::rvector dipV;
+  dipV=atoms.dipole(atomsCom);
+  x.real_value = dipV.norm();
+}
+
+void colvar::dipole_magnitude::calc_gradients()
+{
+  //cvm::real const aux1 = atoms.total_charge/atoms.total_mass;
+  //cvm::real const aux2 = x.real_value*x.real_value;
+  cvm::real const drdx = 1.0;
+
+  for (cvm::atom_iter ai = atoms.begin(); ai != atoms.end(); ai++) {
+    ai->grad = drdx * ai->pos;
+  }
+  if (b_debug_gradients) {
+    cvm::log ("Debugging gradients:\n");
+    debug_gradients (atoms);
+  }
+}
+
+void colvar::dipole_magnitude::apply_force (colvarvalue const &force)
+{
+  if (!atoms.noforce)
+    atoms.apply_colvar_force (force.real_value);
+}
 
