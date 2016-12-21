@@ -543,6 +543,7 @@ class colvar::dipole_magnitude
 protected:
   /// Dipole atom group
   cvm::atom_group  atoms;
+  cvm::atom_pos dipoleV;
 public:
   /// Initialize by parsing the configuration
   dipole_magnitude (std::string const &conf);

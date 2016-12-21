@@ -1180,19 +1180,17 @@ void colvar::dipole_magnitude::calc_value()
 {
   x.real_value = 0.0;
   cvm::atom_pos const atomsCom = atoms.center_of_mass();
-  cvm::rvector dipV;
-  dipV=atoms.dipole(atomsCom);
-  x.real_value = dipV.norm();
+  dipoleV=atoms.dipole(atomsCom);
+  x.real_value = dipoleV.norm();
 }
 
 void colvar::dipole_magnitude::calc_gradients()
 {
-  //cvm::real const aux1 = atoms.total_charge/atoms.total_mass;
-  //cvm::real const aux2 = x.real_value*x.real_value;
-  cvm::real const drdx = 1.0;
+  cvm::real const      aux1 = atoms.total_charge/atoms.total_mass;
+  cvm::atom_pos const  dipVunit= dipoleV.unit();
 
   for (cvm::atom_iter ai = atoms.begin(); ai != atoms.end(); ai++) {
-    ai->grad = drdx * ai->pos;
+    ai->grad = (ai->charge - aux1*ai->mass) * dipVunit;
   }
   if (b_debug_gradients) {
     cvm::log ("Debugging gradients:\n");
