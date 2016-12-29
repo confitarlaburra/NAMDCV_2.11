@@ -1188,9 +1188,17 @@ void colvar::dipole_magnitude::calc_gradients()
 {
   cvm::real const      aux1 = atoms.total_charge/atoms.total_mass;
   cvm::atom_pos const  dipVunit= dipoleV.unit();
-
+  //std::cout<<"Total charge: "<<atoms.total_charge<<" Total Mass "<<atoms.total_mass<<std::endl;
+  //std::cout<<"Dipole: "<<x.real_value<<std::endl;
+  //std::cout<<"Dipole Vect  x y z "<<dipoleV[0]<<" "<<dipoleV[1]<<" "<<dipoleV[2]<<std::endl;
+  //std::cout<<"Dipole VectN x y z "<<dipVunit[0]<<" "<<dipVunit[1]<<" "<<dipVunit[2]<<std::endl;
+  
   for (cvm::atom_iter ai = atoms.begin(); ai != atoms.end(); ai++) {
+    //std::cout<<"atom "<<ai->id+1<<std::endl;
+    //std::cout<<"charge "<<ai->charge<<std::endl;
+    //std::cout<<"pos x y z "<<ai->pos[0]<<" "<<ai->pos[1]<<" "<<ai->pos[2]<<std::endl;
     ai->grad = (ai->charge - aux1*ai->mass) * dipVunit;
+    //std::cout<<"grad x y z "<<ai->grad[0]<<" "<<ai->grad[1]<<" "<<ai->grad[2]<<std::endl;
   }
   if (b_debug_gradients) {
     cvm::log ("Debugging gradients:\n");
@@ -1200,7 +1208,13 @@ void colvar::dipole_magnitude::calc_gradients()
 
 void colvar::dipole_magnitude::apply_force (colvarvalue const &force)
 {
-  if (!atoms.noforce)
+  if (!atoms.noforce) {
     atoms.apply_colvar_force (force.real_value);
+    //std::cout<<"pre force "<<force.real_value<<std::endl;
+    for (cvm::atom_iter ai = atoms.begin(); ai != atoms.end(); ai++) {
+      cvm::atom_pos forceV=force.real_value*ai->grad;
+      //std::cout<<"force x y z "<<forceV[0]<<" "<<forceV[1]<<" "<<forceV[2]<<std::endl;
+    }
+  }
 }
 
